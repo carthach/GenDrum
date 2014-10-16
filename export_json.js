@@ -1,6 +1,10 @@
 var jsonData = emptyJSON();
+var jsonFile;
+var htmlFile;
 
 var started = false;
+
+outlets = 2;
 
 function emptyJSON()
 {
@@ -19,31 +23,53 @@ function emptyJSON()
 
 function list(a)
 {
-	var nodeEntry = {};
-	nodeEntry["name"] = arguments[0];
-	nodeEntry["value"]= arguments[1];
-	jsonData.nodes.push(nodeEntry);
-	
-	var linkEntry = {};
-	linkEntry["source"] = nodeEntry["name"];
-	linkEntry["target"] = 1;
-	linkEntry["value"] = Math.floor((Math.random() * 100) + 1);
-	jsonData.links.push(linkEntry);
-	
-	post("here");
+	if(started) {
+		var nodeEntry = {};
+		nodeEntry["name"] = arguments[0];
+		nodeEntry["value"]= arguments[1];
+		jsonData.nodes.push(nodeEntry);
+		
+		var linkEntry = {};
+		linkEntry["source"] = nodeEntry["name"];
+		linkEntry["target"] = 1;
+		linkEntry["value"] = Math.floor((Math.random() * 10) + 1);
+		jsonData.links.push(linkEntry);
+	}
 }
 
-function clear()
+function start(path)
+{
+	if(path != "/") {
+		path = path.split(":");
+		jsonFile = path[1] + "out.json";
+		htmlFile = path[1] + "force.html";	
+		
+		var htmlText = getHtmlText();
+		
+		var fout = new File(htmlFile,"write","TEXT");
+		if (fout.isopen) {
+			fout.eof = 0;
+			fout.writestring(htmlText);
+			fout.close();
+			post("\nJSON Write",htmlFile);
+		}
+		outlet(1, htmlFile);
+	}
+	newJSON();
+	started = true;
+}
+
+function newJSON()
 {
 	jsonData = emptyJSON();
-	write("./out.json");
+	write(jsonFile);
 }
 
 function bang()
 {	
 	var b = jsobj_to_dict(jsonData);
 	
-	write("./out.json");
+	write(jsonFile);
 	outlet(0, "bang");	
 }
 
@@ -129,4 +155,10 @@ function printobjrecurse (obj, name) {
             post(name + " : empty object" +"\n");
         }
     }
+}
+
+//HTML----------------------------------------------
+
+function getHtmlText() {
+	return '<!DOCTYPE html><meta charset="utf-8"><style>body {	background-color: black;}.node {  stroke: #fff;  stroke-width: 1.5px;}.link {  stroke: #999;  stroke-opacity: .6;}</style><body><script src="http://d3js.org/d3.v3.min.js"></script><script>var width = 240,    height = 160;var color = d3.scale.category20();var force = d3.layout.force()    .charge(-120)    .linkDistance(		function(link) {       		return link.value;    	}    )    .size([width, height]);var svg = d3.select("body").append("svg")    .attr("width", width)    .attr("height", height);d3.json("'+ jsonFile + '", function(error, graph) {  force      .nodes(graph.nodes)      .links(graph.links)      .start();  var link = svg.selectAll(".link")      .data(graph.links)    .enter().append("line")      .attr("class", "link")       .style("stroke-width", function(d) { return d.value/12; });  var node = svg.selectAll(".node")      .data(graph.nodes)    .enter().append("circle")      .attr("class", "node")      .attr("r", 5)      .style("fill", function(d) { return color(d.group); })      .call(force.drag);  node.append("title")      .text(function(d) { return d.name; });  force.on("tick", function() {    link.attr("x1", function(d) { return d.source.x; })        .attr("y1", function(d) { return d.source.y; })        .attr("x2", function(d) { return d.target.x; })        .attr("y2", function(d) { return d.target.y; });    node.attr("cx", function(d) { return d.x; })        .attr("cy", function(d) { return d.y; });  });});</script>';
 }
