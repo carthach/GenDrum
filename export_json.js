@@ -32,7 +32,7 @@ function list(a)
 		var linkEntry = {};
 		linkEntry["source"] = nodeEntry["name"];
 		linkEntry["target"] = 1;
-		linkEntry["value"] = Math.floor((Math.random() * 10) + 1);
+		linkEntry["value"] = Math.floor((Math.random() * 100) + 1);
 		jsonData.links.push(linkEntry);
 	}
 }
@@ -160,5 +160,81 @@ function printobjrecurse (obj, name) {
 //HTML----------------------------------------------
 
 function getHtmlText() {
-	return '<!DOCTYPE html><meta charset="utf-8"><style>body {	background-color: black;}.node {  stroke: #fff;  stroke-width: 1.5px;}.link {  stroke: #999;  stroke-opacity: .6;}</style><body><script src="http://d3js.org/d3.v3.min.js"></script><script>var width = 240,    height = 160;var color = d3.scale.category20();var force = d3.layout.force()    .charge(-120)    .linkDistance(		function(link) {       		return link.value;    	}    )    .size([width, height]);var svg = d3.select("body").append("svg")    .attr("width", width)    .attr("height", height);d3.json("'+ jsonFile + '", function(error, graph) {  force      .nodes(graph.nodes)      .links(graph.links)      .start();  var link = svg.selectAll(".link")      .data(graph.links)    .enter().append("line")      .attr("class", "link")       .style("stroke-width", function(d) { return d.value/12; });  var node = svg.selectAll(".node")      .data(graph.nodes)    .enter().append("circle")      .attr("class", "node")      .attr("r", 5)      .style("fill", function(d) { return color(d.group); })      .call(force.drag);  node.append("title")      .text(function(d) { return d.name; });  force.on("tick", function() {    link.attr("x1", function(d) { return d.source.x; })        .attr("y1", function(d) { return d.source.y; })        .attr("x2", function(d) { return d.target.x; })        .attr("y2", function(d) { return d.target.y; });    node.attr("cx", function(d) { return d.x; })        .attr("cy", function(d) { return d.y; });  });});</script>';
+return '<!DOCTYPE html>\n\
+<meta charset="utf-8">\n\
+<style>\n\
+\n\
+body {\n\
+	background-color: black;\n\
+}\n\
+\n\
+.node {\n\
+  stroke: #fff;\n\
+  stroke-width: 1.5px;\n\
+}\n\
+\n\
+.link {\n\
+  stroke: #999;\n\
+  stroke-opacity: .6;\n\
+}\n\
+\n\
+</style>\n\
+<body>\n\
+<script src="http://d3js.org/d3.v3.min.js"></script>\n\
+<script>\n\
+\n\
+var width = 240,\n\
+    height = 160;\n\
+\n\
+var color = d3.scale.category20();\n\
+\n\
+var force = d3.layout.force()\n\
+    .charge(-120)\n\
+    .linkDistance(\n\
+		function(link) {\n\
+       		return link.value;\n\
+    	}\n\
+    )\n\
+    .size([width, height]);\n\
+\n\
+var svg = d3.select("body").append("svg")\n\
+    .attr("width", width)\n\
+    .attr("height", height);\n\
+\n\
+d3.json("' + jsonFile + '", function(error, graph) {\n\
+  force\n\
+      .nodes(graph.nodes)\n\
+      .links(graph.links)\n\
+      .start();\n\
+\n\
+  var link = svg.selectAll(".link")\n\
+      .data(graph.links)\n\
+    .enter().append("line")\n\
+      .attr("class", "link")\n\
+//       .style("stroke-width", function(d) { return Math.sqrt(d.value); });\n\
+       .style("stroke-width", function(d) { return d.value/12; });\n\
+\n\
+  var node = svg.selectAll(".node")\n\
+      .data(graph.nodes)\n\
+    .enter().append("circle")\n\
+      .attr("class", "node")\n\
+      .attr("r", 5)\n\
+      .style("fill", function(d) { return color(d.group); })\n\
+      .call(force.drag);\n\
+\n\
+  node.append("title")\n\
+      .text(function(d) { return d.name; });\n\
+\n\
+  force.on("tick", function() {\n\
+    link.attr("x1", function(d) { return d.source.x; })\n\
+        .attr("y1", function(d) { return d.source.y; })\n\
+        .attr("x2", function(d) { return d.target.x; })\n\
+        .attr("y2", function(d) { return d.target.y; });\n\
+\n\
+    node.attr("cx", function(d) { return d.x; })\n\
+        .attr("cy", function(d) { return d.y; });\n\
+  });\n\
+});\n\
+\n\
+</script>';
 }
