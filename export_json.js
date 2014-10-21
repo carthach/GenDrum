@@ -1,10 +1,16 @@
 var jsonData = emptyJSON();
 var jsonFile;
 var htmlFile;
+var targetFitness;
 
 var started = false;
 
 outlets = 2;
+
+function targetFitness(targetFitness)
+{
+	this.targetFitness = targetFitness
+}
 
 function emptyJSON()
 {
@@ -12,8 +18,9 @@ function emptyJSON()
 	{
 		nodes : [
 			{
-				"name" : 1,
-				"value" : 1
+				"name" : 0,
+				"value" : 0,
+				"size" : 7
 			}
 		],
 		links : []
@@ -27,11 +34,12 @@ function list(a)
 		var nodeEntry = {};
 		nodeEntry["name"] = arguments[0];
 		nodeEntry["value"]= arguments[1];
+		nodeEntry["size"] = Math.floor((Math.random() * 10) + 1);
 		jsonData.nodes.push(nodeEntry);
 		
 		var linkEntry = {};
 		linkEntry["source"] = nodeEntry["name"];
-		linkEntry["target"] = 1;
+		linkEntry["target"] = 0;
 		linkEntry["value"] = Math.floor((Math.random() * 100) + 1);
 		jsonData.links.push(linkEntry);
 	}
@@ -218,7 +226,7 @@ d3.json("' + jsonFile + '", function(error, graph) {\n\
       .data(graph.nodes)\n\
     .enter().append("circle")\n\
       .attr("class", "node")\n\
-      .attr("r", 5)\n\
+      .attr("r", function(d) {return d.size})\n\
       .style("fill", function(d) { return color(d.group); })\n\
       .call(force.drag);\n\
 \n\
