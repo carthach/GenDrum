@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 713.0, 63.0, 865.0, 760.0 ],
+		"rect" : [ 1083.0, 161.0, 865.0, 760.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -140,7 +140,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 505.0, 25.0, 25.0 ]
+					"patching_rect" : [ 8.0, 533.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -201,8 +201,8 @@
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "float", "symbol", "int" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "list", "float", "symbol" ],
 					"patching_rect" : [ 323.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -215,8 +215,8 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "float", "symbol", "int" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "list", "float", "symbol" ],
 					"patching_rect" : [ 217.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -229,8 +229,8 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "float", "symbol", "int" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "list", "float", "symbol" ],
 					"patching_rect" : [ 114.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -243,8 +243,8 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "float", "symbol", "int" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "list", "float", "symbol" ],
 					"patching_rect" : [ 8.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
