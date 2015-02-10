@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 1083.0, 161.0, 865.0, 760.0 ],
+		"rect" : [ 751.0, 243.0, 865.0, 760.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,11 +44,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 8.0, 82.0, 91.0, 20.0 ],
-					"text" : "route row bang"
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 8.0, 82.0, 61.0, 20.0 ],
+					"text" : "route row"
 				}
 
 			}
@@ -201,8 +201,8 @@
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "list", "float", "symbol" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "float", "symbol", "int" ],
 					"patching_rect" : [ 323.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -215,8 +215,8 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "list", "float", "symbol" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "float", "symbol", "int" ],
 					"patching_rect" : [ 217.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -229,8 +229,8 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "list", "float", "symbol" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "float", "symbol", "int" ],
 					"patching_rect" : [ 114.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
@@ -243,8 +243,8 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "list", "float", "symbol" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "float", "symbol", "int" ],
 					"patching_rect" : [ 8.0, 233.0, 99.0, 20.0 ],
 					"text" : "simpleGA 10 0.3"
 				}
