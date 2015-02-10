@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 59.0, 96.0, 1141.0, 780.0 ],
+		"rect" : [ 216.0, 157.0, 1141.0, 780.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -53,20 +53,6 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 766.5, 525.0, 37.0, 18.0 ],
 					"text" : "set 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-21",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 336.0, 618.0, 32.5, 20.0 ],
-					"text" : "zl"
 				}
 
 			}
@@ -157,11 +143,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 8.0, 82.0, 91.0, 20.0 ],
-					"text" : "route row bang"
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 8.0, 82.0, 61.0, 20.0 ],
+					"text" : "route row"
 				}
 
 			}
