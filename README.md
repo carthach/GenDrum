@@ -8,3 +8,5 @@ Uses SimpleGA (https://github.com/carthach/SimpleGA).
 Installation and Usage
 ======================
 Copy the entire contents of the project into a folder called GenDrum or something similar in your Max Instruments location.
+
+The GenDrum instrument should appear automatically in Max4Live instruments. It creates simple Roland TR-808 style sounds itself, but it can be used to control other MIDI devices using the GenDrum-MIDI listener device.
